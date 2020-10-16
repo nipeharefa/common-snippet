@@ -13,15 +13,9 @@ const Index = () => {
   const [source, setSource] = useState('');
   const [framework, setFramework] = useState('');
 
-  useEffect(() => {
-    console.log('s');
-  }, []);
-
-  const code = '$nipeharefa = dir';
+  useEffect(() => {}, []);
 
   let onFrameworkChange = (v) => {
-    console.log(v.target.value);
-
     setFramework(v.target.value);
   }
 
@@ -49,7 +43,7 @@ const Index = () => {
   return (
     <div className="container mx-auto">
       <select>
-        <option value="render_json">Render JSON</option>
+        <option value="render_json">Render JSON Response</option>
       </select>
 
       <select onChange={onFrameworkChange}>
