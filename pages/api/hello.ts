@@ -12,7 +12,8 @@ let data = {
       'response()->json($data);',
     ],
     'symfony': [
-      '$this->renderJson($data);',
+      '# response',
+      'return $this->renderJson($data);',
     ],
   }
 };

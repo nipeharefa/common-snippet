@@ -1,10 +1,11 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import CodeBlock from '../components/Codeblock';
 
-let framework : Array<string> = [
-  'laravel',
-  'symfony',
-];
+// let frameworkListDEfault : Array<string> = [
+//   'laravel',
+//   'symfony',
+// ];
 
 const Index = () => {
 
@@ -16,6 +17,7 @@ const Index = () => {
     console.log('s');
   }, []);
 
+  const code = '$nipeharefa = dir';
 
   let onFrameworkChange = (v) => {
     console.log(v.target.value);
@@ -32,14 +34,11 @@ const Index = () => {
     })
 
     let url = apiURL + a;
-
     let data = await fetch(url);
     let json = await data.json();
-
     if (data.status === 200) {
       let snippet : string = '```\n';
       json.forEach(element => {
-        console.log(element)
         snippet += `${element}\n`;
       });
       snippet += '```';
@@ -48,7 +47,7 @@ const Index = () => {
   }
 
   return (
-    <div className="cotnainer">
+    <div className="container mx-auto">
       <select>
         <option value="render_json">Render JSON</option>
       </select>
@@ -61,10 +60,10 @@ const Index = () => {
       <button onClick={search}>Search</button>
 
       {/* markdown here */}
-      <ReactMarkdown
-  source={source}
-  escapeHtml={false}
-/>
+        <ReactMarkdown
+          source={source}
+          renderers={{ code: CodeBlock}}
+        />
     </div>
   );
 };
